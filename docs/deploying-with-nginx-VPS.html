@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Welcome</title>
+    <title>Cryogen: Nginx on a VPS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -40,18 +40,61 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-10 col-md-10 col-sm-12">
         <div id="page-header">
-            <h1>Welcome</h1>
+            <h1>Nginx on a VPS</h1>
         </div>
         
 
         <div id="content">
-            <p>This site aims to be a complete guide to Cryogen. I hope to cover how to get your site up and running, creating and managing your content and layouts, customizing the aesthetics and functionality of your site, and finally how to deploy your site.</p><h2><a name="what&#95;is&#95;cryogen?"></a>What is Cryogen?</h2><p>Cryogen is a simple static site generator built with Clojure. It's shipped on Leiningen so setup is fuss free and there's no need to mess with databases or other CMS systems. </p><p>Cryogen reads through a directory containing your Markdown content, compiles it into HTML and injects the content into your templates with the <a href='https://GitHub.com/yogthos/selmer'>Selmer</a> templating system. It then spits out a ready-to-publish website complete with a sitemap and RSS feed.</p><p>If you come across anything along the way that this guide doesn't cover, please <a href='https://GitHub.com/lacarmen/cryogen/issues/new'>open an issue</a> on the GitHub page and further instructions can be included here.</p>
+             <p>A Virtual Private Servers (VPS) such as <a href='https://www.digitalocean.com/'>DigitalOcean</a> are an excellent way to host a site with static content for around $5 per month. Here's a quick rundown on how to serve your content with <a href='http://wiki.nginx.org/'>Nginx</a> on VPS running Ubuntu.</p><h2><a name="setting&#95;up&#95;nginx"></a>Setting up Nginx</h2><p>The first thing you'll need to do is install Nginx if you don't already have it on your server.</p><pre><code>$ sudo apt-get install nginx
+</code></pre><p>Next, you'll want to create a directory for your site's content and make it public. For the purposes of this guide, let's suppose we're on a user called <code>deploy</code> with sudo permissions. </p><pre><code>$ mkdir &#126;/site
+$ chmod 755 &#126;/site
+</code></pre><p>Next, you'll want to make a backup of the default configuration in /etc/nginx/sites-available/default and replace it with one of the following:</p><h3><a name="configuration&#95;for&#95;sites&#95;with&#95;no&#95;blog-prefix"></a>Configuration for sites with no blog-prefix</h3><pre><code>server {
+ listen 80;
+
+ root /home/deploy/site;
+ index index.html index.htm;
+
+ server&#95;name YOURDOMAIN.COM www.YOURDOMAIN.COM;
+
+ access&#95;log /var/log/nginx/access.log;
+ error&#95;log /var/log/nginx/error.log;
+
+ location / {
+   default&#95;type &quot;text/html&quot;;
+   alias /home/deploy/site/;
+   try&#95;files $uri.html $uri $uri/ =404;
+   error&#95;page    404 = /404.html;
+ }
+}
+</code></pre><p>Simply set <code>YOURDOMAIN.COM</code> to the domain of your site in the configuration and ensure the static content is available at <code>/home/deploy/site/</code>. Finally, place your custom error page in the <code>/home/deploy/site/404.html</code> file.</p><h3><a name="configuration&#95;for&#95;sites&#95;with&#95;a&#95;blog-prefix"></a>Configuration for sites with a blog-prefix</h3><p>If you've provided a <code>blog-prefix</code> in your Cryogen configuration you will have to reflect that in your nginx configuration file.</p><pre><code>server{
+ listen 80;
+
+ root /home/deploy/site;
+ index index.html index.htm;
+ error&#95;page    404 = /404.html;
+
+ server&#95;name YOURDOMAIN.COM www.YOURDOMAIN.COM;
+
+ access&#95;log /var/log/nginx/access.log;
+ error&#95;log /var/log/nginx/error.log;
+
+ location / {
+   default&#95;type &quot;text/html&quot;;
+   try&#95;files $uri.html $uri $uri/ =404;
+ }
+
+ location /BLOG-PREFIX/ {
+   alias /home/deploy/site/BLOG-PREFIX/;
+ }
+}
+</code></pre><p>Simply set <code>YOURDOMAIN.COM</code> to the domain of your site in the configuration and ensure the static content is available at <code>/home/deploy/site/BLOG-PREFIX/</code>. Finally, place your custom error page in the <code>/home/deploy/site/404.html</code> file.</p><p>Once you've changed your nginx configuration file, restart nginx.</p><pre><code>$ sudo service nginx restart
+</code></pre><h2><a name="deploying&#95;your&#95;site"></a>Deploying Your Site</h2><p>When your server is ready to serve your site, you'll need to upload your site to your server to start serving your content. You can do this with a FTP client such as <a href='https://filezilla-project.org/'>FileZilla</a> or with the <code>scp</code> command from the terminal.</p><p>If you'd like to change or add more content to your site after you get it up and running, simply transfer the content generated by Cryogen once again.</p>
         </div>
 
         <div id="prev-next">
             
+            <a class="left" href="/cryogen/docs/deploying-to-github-pages.html">&laquo; Prev</a>
             
-            <a class="right" href="/cryogen/docs/getting-started.html">Next &raquo;</a>
             
         </div>
     </div>

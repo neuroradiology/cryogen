@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Welcome</title>
+    <title>Cryogen: GitHub Pages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -40,18 +40,34 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-10 col-md-10 col-sm-12">
         <div id="page-header">
-            <h1>Welcome</h1>
+            <h1>GitHub Pages</h1>
         </div>
         
 
         <div id="content">
-            <p>This site aims to be a complete guide to Cryogen. I hope to cover how to get your site up and running, creating and managing your content and layouts, customizing the aesthetics and functionality of your site, and finally how to deploy your site.</p><h2><a name="what&#95;is&#95;cryogen?"></a>What is Cryogen?</h2><p>Cryogen is a simple static site generator built with Clojure. It's shipped on Leiningen so setup is fuss free and there's no need to mess with databases or other CMS systems. </p><p>Cryogen reads through a directory containing your Markdown content, compiles it into HTML and injects the content into your templates with the <a href='https://GitHub.com/yogthos/selmer'>Selmer</a> templating system. It then spits out a ready-to-publish website complete with a sitemap and RSS feed.</p><p>If you come across anything along the way that this guide doesn't cover, please <a href='https://GitHub.com/lacarmen/cryogen/issues/new'>open an issue</a> on the GitHub page and further instructions can be included here.</p>
+             <p><a href='https://pages.GitHub.com/'>GitHub Pages</a> are freely hosted web pages on GitHub's <code>GitHub.io</code> domain. Normally, they are powered by <a href='http://jekyllrb.com'>Jekyll</a> but because GitHub Pages supports HTML content, it is possible to host your Cryogen-powered sites as well.</p><p>GitHub provides two basic types of hosting: <em>user/organization pages</em> and <em>project pages</em>. Both of these work by looking at specific branches of your repositories on GitHub. The way to deploy these two types of sites are very similar and only differ in their initial setup.</p><h2><a name="setting&#95;up&#95;user&#95;and&#95;organization&#95;pages"></a>Setting up User and Organization Pages</h2><p>User and organization pages must live in a GitHub repository dedicated to only your site's files. This repository must be named <em>username</em>.GitHub.io. Where <em>username</em> is your GitHub username or the name of the organization. For example, <code>lacarmen.GitHub.io</code>.</p><p>Content from the <code>master</code> branch of your repository will be used to build and publish your site to your GitHub page.</p><p>If you'd like to create a user or organization page with Cryogen, please make sure the <code>blog-prefix</code> field in the configuration file is empty.</p><h2><a name="setting&#95;up&#95;project&#95;pages"></a>Setting up Project Pages</h2><p>Unlike user/organization pages, project pages are kept in the same repository as the project itself, except the site's content is stored in a specially named <code>gh-pages</code> branch. The output will become available under a subpath of your user page domain, such as <code>lacarmen.GitHub.io/cryogen</code>.</p><p>The Cryogen repository is a good example of this structure. The <a href='https://GitHub.com/lacarmen/cryogen/tree/master'>master branch</a> contains the boilerplate lein-template for Cryogen and the website that you're looking at right now is contained in the <a href='https://GitHub.com/lacarmen/cryogen/tree/gh-pages'>gh-pages branch</a> of the same repository.</p><p>If you'd like to use Cryogen to create a page for your project, please make sure the <code>blog-prefix</code> field in the configuration file matches the name of your project's repository.</p><h3><a name="creating&#95;the&#95;gh-pages&#95;branch"></a>Creating the gh-pages branch</h3><p>To create the branch for your project page, you must create a new "orphan" branch.</p><p>The safest way to do this is to create a fresh clone of your repository</p><pre><code>$ git clone https://GitHub.com/user/repository.git
+# Clone your repository
+</code></pre><p>Once you have a fresh repository, you'll need to create the <code>gh-pages</code> branch and rid it of all its content:</p><pre><code>$ cd repository
+
+$ git checkout --orphan gh-pages
+# Creates a branch without any parents
+# Switched to a new branch 'gh-pages'
+
+$ git rm -rf .
+# Remove all files from the old working tree
+# rm .gitignore
+</code></pre><br /><h2><a name="deploying&#95;to&#95;github&#95;pages"></a>Deploying to GitHub Pages</h2><p>Once you've set up your repository for the type of GitHub Page that you want, copy over all your files and folders under the root directory of your site - <code>public</code> if you're creating a user page; <code>public/YOUR-PROJECT-REPO-NAME</code> if you're creating a project page.  </p><p>The last step is to push your content to GitHub. </p><pre><code>$ git add &#42;
+$ git commit -a -m &quot;Initial page commit&quot;
+$ git push origin gh-pages
+</code></pre><p>If you make any changes to your site, simply follow this deployment step to update your GitHub Page.</p>
         </div>
 
         <div id="prev-next">
             
+            <a class="left" href="/cryogen/docs/creating-pages.html">&laquo; Prev</a>
             
-            <a class="right" href="/cryogen/docs/getting-started.html">Next &raquo;</a>
+            
+            <a class="right" href="/cryogen/docs/deploying-with-nginx-VPS.html">Next &raquo;</a>
             
         </div>
     </div>
