@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='http://lacarmen.github.io/' rel='self' type='application/rss+xml'/>
+<generator>
+clj-rss
+</generator>
+<title>
+Cryogen
+</title>
+<link>
+http://lacarmen.github.io/
+</link>
+<description>
+Cryogen's Docs
+</description>
+<lastBuildDate>
+Thu, 18 Dec 2014 11:45:41 -0500
+</lastBuildDate>
+<author>
+Carmen La
+</author>
+</channel>
+</rss>
