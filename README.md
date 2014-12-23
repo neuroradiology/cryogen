@@ -1,7 +1,7 @@
 Cryogen docs site
 =======
 
-This branch contains the code for Cryogen's documentation site, [cryogenweb.org](http://lacarmen.github.io/cryogen/).
+This branch contains the code for Cryogen's documentation site, [cryogenweb.org](http://cryogenweb.org/).
 
 ## Contributing
 
