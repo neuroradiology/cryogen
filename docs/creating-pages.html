@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Cryogen: Creating Pages</title>
+    <link rel="icon" href="/img/logo.png"
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -19,14 +20,14 @@
     <header>
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-5">
-                <a href="/cryogen/index.html"><img height="120px" src="/cryogen/img/logo.png"/><h1>Cryogen</h1></a>
+                <a href="/index.html"><img height="120px" src="/img/banner.png"/><h1>Cryogen</h1></a>
                 <h2 id="slogan" class="faint">Static site generation made easy</h2>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7">
                 <nav>
                     <ul id="menu" class="nav nav-pills navbar-right">
-                        <li><a href="/cryogen/index.html">Home</a></li>
-                        <li><a href="/cryogen/docs/home.html">Doc<span class="show-on-mobile">s</span><span class="hide-on-mobile">umentation</span></a></li>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span class="hide-on-mobile">umentation</span></a></li>
                         <li><a href="https://github.com/lacarmen/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a></li>
                     </ul>
                 </nav>
@@ -47,15 +48,15 @@
         <div id="content">
              <p>Creating pages is not much different from writing posts. You're still required to include the map representing the metadata and the page must be written in valid Markdown. </p><h2><a name="the&#95;pages&#95;folder"></a>The Pages Folder</h2><p>Similar to your posts, all of your pages should reside under the <code>page-root</code> folder specified in your configuration file. Again, as long as the file contains the proper metadata followed by valid Markdown content, they will be converted into an HTML page. </p><h2><a name="creating&#95;pages"></a>Creating Pages</h2><p>To create a new page, just make a new Markdown file under your <code>page-root</code>. You don't need to include a date in the file name like you need to with a post but words should still be dash-separated and the file must have a <code>.md</code> extension. For example:</p><pre><code>about.md
 my-projects.md
-</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><ul><li><code>:title</code> - A string representation of your page title.</li><li><code>:layout</code> - A keyword representing the name of the HTML file that you want to use as your page layout.</li><li><code>:page-index</code> - Because pages can be linked up with previous/next links, this is how they get sorted.</li><li><code>:navbar?</code> - Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.  </li></ul><h3><a name="images&#95;in&#95;your&#95;pages"></a>Images in Your Pages</h3><p>You can include images in your pages in the same way you include images in your blog posts. Please refer to the "Including Images in Posts" and "Images in Markdown" sections of the <a href='/cryogen/docs/writing-posts.html'>Writing Posts</a> page.</p><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Want to show off your code in a page? It works the same way as it does in posts. Just wrap your code block in triple backticks and highlight.js will take care of the rest.</p>
+</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><ul><li><code>:title</code> - A string representation of your page title.</li><li><code>:layout</code> - A keyword representing the name of the HTML file that you want to use as your page layout.</li><li><code>:page-index</code> - Because pages can be linked up with previous/next links, this is how they get sorted.</li><li><code>:navbar?</code> - Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.  </li></ul><h3><a name="images&#95;in&#95;your&#95;pages"></a>Images in Your Pages</h3><p>You can include images in your pages in the same way you include images in your blog posts. Please refer to the "Including Images in Posts" and "Images in Markdown" sections of the <a href='/docs/writing-posts.html'>Writing Posts</a> page.</p><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Want to show off your code in a page? It works the same way as it does in posts. Just wrap your code block in triple backticks and highlight.js will take care of the rest.</p>
         </div>
 
         <div id="prev-next">
             
-            <a class="left" href="/cryogen/docs/writing-posts.html">&laquo; Prev</a>
+            <a class="left" href="/docs/writing-posts.html">&laquo; Prev</a>
             
             
-            <a class="right" href="/cryogen/docs/deploying-to-github-pages.html">Next &raquo;</a>
+            <a class="right" href="/docs/deploying-to-github-pages.html">Next &raquo;</a>
             
         </div>
     </div>
@@ -65,31 +66,31 @@ my-projects.md
             <h4>Getting Started</h4>
             <ul>
                 
-                <li><a href="/cryogen/docs/home.html">Welcome</a></li>
+                <li><a href="/docs/home.html">Welcome</a></li>
                 
-                <li><a href="/cryogen/docs/getting-started.html">Getting Started</a></li>
+                <li><a href="/docs/getting-started.html">Getting Started</a></li>
                 
-                <li><a href="/cryogen/docs/structure.html">Directory Structure</a></li>
+                <li><a href="/docs/structure.html">Directory Structure</a></li>
                 
-                <li><a href="/cryogen/docs/configuration.html">Configuration</a></li>
+                <li><a href="/docs/configuration.html">Configuration</a></li>
                 
             </ul>
             
             <h4>Your Content</h4>
             <ul>
                 
-                <li><a href="/cryogen/docs/writing-posts.html">Writing Posts</a></li>
+                <li><a href="/docs/writing-posts.html">Writing Posts</a></li>
                 
-                <li><a href="/cryogen/docs/creating-pages.html">Creating Pages</a></li>
+                <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
                 
             </ul>
             
             <h4>Deployment</h4>
             <ul>
                 
-                <li><a href="/cryogen/docs/deploying-to-github-pages.html">GitHub Pages</a></li>
+                <li><a href="/docs/deploying-to-github-pages.html">GitHub Pages</a></li>
                 
-                <li><a href="/cryogen/docs/deploying-with-nginx-VPS.html">Nginx on a VPS</a></li>
+                <li><a href="/docs/deploying-with-nginx-VPS.html">Nginx on a VPS</a></li>
                 
             </ul>
             
